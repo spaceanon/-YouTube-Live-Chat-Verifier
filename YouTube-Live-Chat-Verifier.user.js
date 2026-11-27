@@ -1,8 +1,12 @@
 
+
+
+
+
 // ==UserScript==
 // @name         YouTube Live Chat Verifier
 // @namespace    yt-live-chat-verifier
-// @version      1.9
+// @version      2.0
 // @description  Fast and lightweight public YouTube live chat verification.
 // @author       Enteranon
 // @match        https://www.youtube.com/live_chat*
@@ -112,6 +116,11 @@
         ${SEL} #message[${ATTR}="not-found"]::after {
             content: "✗ Not found";
             color: #ff4444;
+        }
+
+        ${SEL} #message[${ATTR}="not-seen-yet"]::after {
+            content: "? Not seen yet";
+            color: #eab308;
         }
 
         ${SEL} #message[${ATTR}="unconfirmed"]::after {
@@ -863,11 +872,10 @@
                         e.time + CONFIG.coverageMargin
                 );
 
-            const covered =
-                validConnection &&
-                reliableIdentity &&
-                enoughPolls &&
-                timelineCovered;
+            const enoughEvidence =
+                validConnection && reliableIdentity && enoughPolls;
+
+            const covered = enoughEvidence && timelineCovered;
 
             // Idle chats may not provide enough
             // timestamp evidence. Do not mark red
@@ -875,9 +883,8 @@
 
             mark(
                 e,
-                covered
-                    ? 'not-found'
-                    : 'unconfirmed'
+                covered ? 'not-found' :
+                    enoughEvidence ? 'not-seen-yet' : 'unconfirmed'
             );
 
             if (
@@ -1708,7 +1715,11 @@
     poll();
 
     console.info(
-        '[Chat Verifier] Version 1.9 started'
+        '[Chat Verifier] Version 2.0 started'
     );
 
 })();
+
+
+
+
