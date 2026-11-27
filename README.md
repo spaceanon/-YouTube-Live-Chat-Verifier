@@ -22,7 +22,7 @@ A lightweight Tampermonkey userscript that checks whether your YouTube live chat
 ## Installation
 
 1. Install Tampermonkey.
-2. Open the `ouTube-Live-Chat-Verifier.user.js` file in this repository.
+2. Open the `YouTube-Live-Chat-Verifier.user.js` file in this repository.
 3. Click **Raw** and install the script.
 4. Reload YouTube.
 
