@@ -1,4 +1,4 @@
-# YouTube Live Chat Verifier v1.9
+# YouTube Live Chat Verifier v2.0
 
 A lightweight Tampermonkey userscript that checks whether your YouTube live chat messages are publicly visible.
 
