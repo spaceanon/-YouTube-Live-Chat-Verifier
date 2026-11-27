@@ -1,8 +1,3 @@
-
-
-
-
-
 // ==UserScript==
 // @name         YouTube Live Chat Verifier
 // @namespace    yt-live-chat-verifier
